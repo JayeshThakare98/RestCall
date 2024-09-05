@@ -27,11 +27,7 @@ import com.restCa.Service.PostService;
 //
 //	@Override
 //	public List<Map<String, Object>> getPost() {
-//		String url = sBuilder.append(POST).toString();
-//
-//		ResponseEntity<List> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null, List.class);
-//
-//		return responseEntity.getBody();
+//		 
 //
 //	}
 //
