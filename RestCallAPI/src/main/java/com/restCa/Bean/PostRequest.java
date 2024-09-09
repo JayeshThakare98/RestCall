@@ -1,25 +1,17 @@
-package com.restCa.Model;
+package com.restCa.Bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class PostModel {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+public class PostRequest {
 	private Integer userId;
+	private Integer id;
 	private String title;
 	private String body;
 
-	public PostModel() {
+	public PostRequest() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostModel(Integer userId, Integer id, String title, String body) {
+	public PostRequest(Integer userId, Integer id, String title, String body) {
 		super();
 		this.userId = userId;
 		this.id = id;
@@ -60,4 +52,5 @@ public class PostModel {
 	}
 
 	
+
 }
