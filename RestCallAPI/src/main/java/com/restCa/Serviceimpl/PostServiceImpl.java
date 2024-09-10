@@ -95,31 +95,32 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<PostModel> saveToDBFromApi() {
-		List<PostModel> postModels = new ArrayList<>();
+		List<PostModel> postModelsList = new ArrayList<>();
 		List<Map<String, Object>> posts = getPost();
 
 		for (Map<String, Object> postData : posts) {
-			PostModel post = new PostModel();
-			post.setId((Integer) postData.get("id"));
-			post.setUserId((Integer) postData.get("userId"));
-			post.setTitle((String) postData.get("title"));
-			post.setBody((String) postData.get("body"));
+			PostModel postModels = new PostModel();
+			postModels.setId((Integer) postData.get("id"));
+			postModels.setUserId((Integer) postData.get("userId"));
+			postModels.setTitle((String) postData.get("title"));
+			postModels.setBody((String) postData.get("body"));
 			
-
+			postModelsList.add(postRepository.save(postModels));
 //			Optional<PostModel> existingPost = postRepository.findById(post.getId());
-			Optional<PostModel> existingPost = postRepository.findByUserId(post.getId());
-
-			if (existingPost.isPresent()) {
-				PostModel updatePost = existingPost.get();
-				updatePost.setTitle(post.getTitle());
-				updatePost.setBody(post.getBody());
-//				updatePost.setId(post.getId());
-				postModels.add(postRepository.save(updatePost));
-			} else {
-				postModels.add(postRepository.save(post));
-			}
+//			Optional<PostModel> existingPost = postRepository.findByUserId(post.getId());
+//
+//			if (existingPost.isPresent()) {
+//				PostModel updatePost = existingPost.get();
+//				updatePost.setTitle(post.getTitle());
+//				updatePost.setBody(post.getBody());
+////				updatePost.setId(post.getId());
+//				postModels.add(postRepository.save(updatePost));
+//			} else {
+//				postModels.add(postRepository.save(post));
+//			}
 		}
-		return postModels;
+//		return postModels;
+		return postModelsList ; 
 	}
 
 	@Override
